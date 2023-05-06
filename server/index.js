@@ -4,6 +4,7 @@ import cors from "cors";
 import connectDB from "./mongodb/connect.js";
 import userRouter from "./routes/user.routes.js";
 import playerRouter from "./routes/player.routes.js";
+import reportRouter from "./routes/report.routes.js";
 
 dotenv.config();
 
@@ -17,14 +18,15 @@ app.get('/', (req, res) => {
 
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/players', playerRouter);
+app.use('/api/v1/reports', reportRouter);
 
-const startServer = async () => {
+async function startServer() {
     try {
-        connectDB(process.env.MONGODB_URL)
+        connectDB(process.env.MONGODB_URL);
 
-        app.listen(8080, () => console.log('Server has start at port http://localhost:8080'))
+        app.listen(8080, () => console.log('Server has start at port http://localhost:8080'));
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 }
 

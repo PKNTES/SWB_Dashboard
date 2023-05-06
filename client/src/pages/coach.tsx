@@ -14,8 +14,8 @@ const Coaches = () => {
   const allCoaches = data?.data ?? [];
   
   
-  if(isLoading) return <div>Loading...</div>
-  if(isError) return <div>Error...</div>
+  if(isLoading) return <div>Loading...</div>;
+  if(isError) return <div>Error...</div>;
 
   return (
     <Box>

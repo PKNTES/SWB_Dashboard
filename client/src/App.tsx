@@ -52,10 +52,17 @@ import { ColorModeContextProvider } from "./contexts/color-mode";
 import { MuiInferencer } from "@refinedev/inferencer/mui";
 import { Dashboard } from "@mui/icons-material";
 import Home from "pages/Home";
+import ReportDetails from "pages/report-Details";
+import AllReports from "pages/all-Reports";
+import CreateReports from "pages/create-Reports";
+import  EditReports  from "pages/edit-Reports";
+
+
 import PlayerDetails from 'pages/player-Details';
 import AllPlayers from 'pages/all-Players';
 import CreatePlayers from "pages/create-Players";
 import EditPlayers from "pages/edit-Players";
+import { useParams } from "react-router-dom";
 
 import Profile from "pages/coach-Profile";
 import MyProfile from "pages/my-Profile";
@@ -80,6 +87,7 @@ axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
 });
 
 function App() {
+  const { id } = useParams();
   const authProvider: AuthBindings = {
     login: async ({ credential }: CredentialResponse) => {
       const profileObj = credential ? parseJwt(credential) : null;
@@ -206,6 +214,16 @@ function App() {
 
                 },
                 {
+                  name: "reports",
+                  list: AllReports,
+                  show: ReportDetails,
+                  create: "/reports/create",
+                  edit: EditReports,
+                  icon: <EmojiPeopleIcon color="secondary" />,
+                  
+
+                },
+                {
                   name: "Teams",
                   list: Teams,
                   icon: <Diversity3Icon color="secondary" />,
@@ -274,9 +292,15 @@ function App() {
                     <Route path="edit/:id" element={<EditPlayers />} />
                     <Route path="show/:id" element={<PlayerDetails />} />
                   </Route>
+                  <Route path="reports">
+                    <Route index element={<AllReports />} />
+                    <Route path="create" element={<CreateReports />} />
+                    <Route path="edit/:id" element={<EditReports />} />
+                    <Route path="show/:id" element={<ReportDetails />} />
+                  </Route>
                   <Route path="coaches">
                     <Route index element={<Coaches />} />
-                    <Route path="show/:id" element={<Profile/>} /> 
+                    <Route path="show/"  element={<Profile  />} /> 
                   </Route>
 
                   <Route path="/Admins" element={<Home />  }>

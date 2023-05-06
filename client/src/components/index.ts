@@ -8,10 +8,12 @@ import CoachReports from "./charts/coachReports";
 import TotalReports from "./charts/TotalReports";
 
 import CoachCard  from "./coaches/CoachCard";
+import ReportCard from "./common/ReportCard";
 
 import TopCoach from "./Home/TopCoach";
 
 export {
+    ReportCard,
     Profile,
     PlayerCard,
     CustomButton, 

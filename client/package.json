@@ -9,6 +9,7 @@
     "@mui/lab": "^5.0.0-alpha.85",
     "@mui/material": "^5.8.6",
     "@mui/x-data-grid": "^5.12.1",
+    "@react-three/fiber": "^8.13.0",
     "@refinedev/cli": "^2.5.1",
     "@refinedev/core": "^4.14.0",
     "@refinedev/inferencer": "^3.1.4",
@@ -24,16 +25,18 @@
     "react-dom": "^18.0.0",
     "react-hook-form": "^7.30.0",
     "react-router-dom": "^6.8.1",
-    "react-scripts": "^5.0.0"
+    "react-scripts": "^5.0.0",
+    "three": "^0.152.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^14.1.1",
     "@types/jest": "^29.2.4",
-    "@types/node": "^15.20.11",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
+    "@types/node": "^18.6.0",
+    "@types/react": "^18.2.5",
+    "@types/react-dom": "^18.2.3",
+    "@types/three": "^0.152.0",
     "typescript": "^5.0.4",
     "web-vitals": "^1.1.1"
   },

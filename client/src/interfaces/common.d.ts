@@ -27,6 +27,16 @@ export interface PlayerProps {
     photo: string,
     creator: string
 }
+export interface ReportProps {
+    
+    _id: string,
+    title: string,
+    description: string,
+    location: string,
+    team: string,
+    photo: string,
+    creator: string
+}
 
 export interface FormProps {
     type: string,

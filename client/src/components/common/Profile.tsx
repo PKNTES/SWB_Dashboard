@@ -1,6 +1,6 @@
 import { Email, Phone, Place } from "@mui/icons-material";
 import { Box, Stack, Typography } from "@mui/material";
-
+import { useParams } from "react-router-dom";
 import { ProfileProps, PlayerProps } from "interfaces/common";
 import PlayerCard from "./PlayerCard";
 
@@ -9,6 +9,7 @@ function checkImage(url: any) {
     img.src = url;
     return img.width !== 0 && img.height !== 0;
 }
+
 
 const   Profile = ({ type, name, avatar, email,  players }: ProfileProps) => (
     <Box>
@@ -72,7 +73,7 @@ const   Profile = ({ type, name, avatar, email,  players }: ProfileProps) => (
                                     {name}
                                 </Typography>
                                 <Typography fontSize={16} color="#808191">
-                                    Realestate Agent
+                                    Coach
                                 </Typography>
                             </Stack>
 
@@ -83,7 +84,7 @@ const   Profile = ({ type, name, avatar, email,  players }: ProfileProps) => (
                                         fontWeight={500}
                                         color="#808191"
                                     >
-                                        Address
+                                        Location
                                     </Typography>
                                     <Box
                                         display="flex"
@@ -96,8 +97,7 @@ const   Profile = ({ type, name, avatar, email,  players }: ProfileProps) => (
                                             fontSize={14}
                                             color="#11142D"
                                         >
-                                            4517 Washington Ave. Manchaster,
-                                            Kentucky 39495
+                                            Oakland, CA
                                         </Typography>
                                     </Box>
                                 </Stack>

@@ -1,5 +1,6 @@
 import { useLogin } from "@refinedev/core";
 import { useEffect, useRef } from "react";
+import { SportsSoccerTwoTone } from "@mui/icons-material";
 
 import { yariga } from "assets";
 
@@ -63,6 +64,8 @@ export const Login: React.FC = () => {
       >
         <ThemedTitleV2
           collapsed={false}
+          icon={<SportsSoccerTwoTone />}
+          text="SWB Dashboard"
           wrapperStyles={{
             fontSize: "22px",
             justifyContent: "center",
@@ -72,13 +75,13 @@ export const Login: React.FC = () => {
         <GoogleButton />
 
         <Typography align="center" color={"text.secondary"} fontSize="12px">
-          Powered by
+          Powered by SWB
           <img
             style={{ padding: "0 5px" }}
             alt="SWB  "
-            src={yariga}
+            src="https://static.wixstatic.com/media/f3b58a_4e2d24c559d9463da234a24c190e436c~mv2.png/v1/fill/w_86,h_86,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/SWB%20Logo%20Primary%20(Large).png"
           />
-          SWB
+          
         </Typography>
       </Box>
     </Container>

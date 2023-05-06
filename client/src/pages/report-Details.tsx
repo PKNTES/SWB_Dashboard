@@ -10,7 +10,7 @@ function checkImage(url: any) {
   return img.width !== 0 && img.height !== 0;
 }
 
-const PlayerDetails = () => {
+const ReportDetails = () => {
 
   const navigate = useNavigate();
   const { data: user } = useGetIdentity<{name: string, email: string}>();
@@ -20,7 +20,7 @@ const PlayerDetails = () => {
 
   const { data, isLoading, isError} = queryResult;
 
-  const playerDetails = data?.data ?? {};
+  const reportDetails = data?.data ?? {};
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -30,21 +30,21 @@ if (isError) {
     return <div>Something went wrong!</div>;
 }
 
-  const isCurrentUser = user?.email === playerDetails.creator.email;
+  const isCurrentUser = user?.email === reportDetails.creator.email;
 
-  const handleDeletePlayer = () => {
+  const handleDeleteReport = () => {
     const response = window.confirm(
-        "Are you sure you want to delete this player?",
+        "Are you sure you want to delete this report?",
     );
     if (response) {
         mutate(
             {
-                resource: "players",
+                resource: "reports",
                 id: id as string,
             },
             {
                 onSuccess: () => {
-                    navigate("/players");
+                    navigate("/reports");
                 },
             },
         );
@@ -58,7 +58,7 @@ if (isError) {
             width="fit-content"
         >
             <Typography fontSize={25} fontWeight={700} color="#11142D">
-                Player Details
+                Report Details
             </Typography>
             <Box
                 mt="20px"
@@ -68,7 +68,7 @@ if (isError) {
             >
                 <Box flex={1} maxWidth={764}>
                     <img
-                        src={playerDetails.photo}
+                        src={reportDetails.photo}
                         alt="player_details-img"
                         height={546}
                         style={{ objectFit: "cover", borderRadius: "10px" }}
@@ -87,7 +87,7 @@ if (isError) {
                                 color="#11142D"
                                 textTransform="capitalize"
                             >
-                                {playerDetails.position}
+                                {reportDetails.position}
                             </Typography>
                             <Box>
                                 {[1, 2, 3, 4, 5].map((item) => (
@@ -114,7 +114,7 @@ if (isError) {
                                     mt="10px"
                                     color="#11142D"
                                 >
-                                    {playerDetails.title}
+                                    {reportDetails.title}
                                 </Typography>
                                 <Stack
                                     mt={0.5}
@@ -124,7 +124,7 @@ if (isError) {
                                 >
                                     <Place sx={{ color: "#808191" }} />
                                     <Typography fontSize={14} color="#808191">
-                                        {playerDetails.location}
+                                        {reportDetails.location}
                                     </Typography>
                                 </Stack>
                             </Box>
@@ -148,7 +148,7 @@ if (isError) {
                                         fontWeight={700}
                                         color="#475BE8"
                                     >
-                                        {playerDetails.team}
+                                        {reportDetails.team}
                                     </Typography>
                                     <Typography
                                         fontSize={14}
@@ -167,7 +167,7 @@ if (isError) {
                                 Description
                             </Typography>
                             <Typography fontSize={14} color="#808191">
-                                {playerDetails.description}
+                                {reportDetails.description}
                             </Typography>
                         </Stack>
                         </Box>
@@ -198,8 +198,8 @@ if (isError) {
                         >
                             <img
                                 src={
-                                    checkImage(playerDetails.creator.avatar)
-                                        ? playerDetails.creator.avatar
+                                    checkImage(reportDetails.creator.avatar)
+                                        ? reportDetails.creator.avatar
                                         : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
                                 }
                                 alt="avatar"
@@ -217,7 +217,7 @@ if (isError) {
                                     fontWeight={600}
                                     color="#11142D"
                                 >
-                                    {playerDetails.creator.name}
+                                    {reportDetails.creator.name}
                                 </Typography>
                                 <Typography
                                     mt="5px"
@@ -242,7 +242,7 @@ if (isError) {
                                     fontWeight={400}
                                     color="#808191"
                                 >
-                                   {playerDetails.location}
+                                   {reportDetails.location}
                                 </Typography>
                             </Stack>
 
@@ -253,7 +253,7 @@ if (isError) {
                                 fontWeight={600}
                                 color="#11142D"
                             >
-                                {playerDetails.creator.allPlayers.length}{" "}
+                                {reportDetails.creator.allReports.length}{" "}
                                 
                             </Typography>
                             </Stack>
@@ -277,7 +277,7 @@ if (isError) {
                                 handleClick={() => {
                                     if (isCurrentUser) {
                                         navigate(
-                                            `/players/edit/${playerDetails._id}`,
+                                            `/players/edit/${reportDetails._id}`,
                                         );
                                     }
                                 }}
@@ -291,7 +291,7 @@ if (isError) {
                                 fullWidth
                                 icon={!isCurrentUser ? <Phone /> : <Delete />}
                                 handleClick={() => {
-                                    if (isCurrentUser) handleDeletePlayer();
+                                    if (isCurrentUser) handleDeleteReport();
                                 }}
                             />
                         </Stack>
@@ -308,15 +308,7 @@ if (isError) {
                         />
                     </Stack>
 
-                    <Box>
-                        <CustomButton
-                            title="Player Reports"
-                            handleClick={() => navigate('/reports')}
-                            backgroundColor="#475BE8"
-                            color="#FCFCFC"
-                            fullWidth
-                        />
-                        </Box>
+                   
 
 </Box>
     </Box>
@@ -326,4 +318,4 @@ if (isError) {
 };
 
 
-export default PlayerDetails;
+export default ReportDetails;
